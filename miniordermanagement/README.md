@@ -1,16 +1,75 @@
-# React + Vite
+# Mini Order Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Mini Order Management application built with React and ASP.NET Core Web API.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application provides a complete customer and order management flow:
 
-## React Compiler
+- Dashboard with customer, order, and revenue statistics
+- Customer listing
+- Customer details
+- Create Customer
+- Order listing
+- Order details
+- Create Order
+- Common application layout with Header, Sidebar, Main Content, and Footer
+- Redux-based state management
+- Loading and error handling
+- Success messages after create operations
+- Unit tests for backend application logic
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technology Stack
 
-## Expanding the ESLint configuration
+### Frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- JavaScript / JSX
+- Redux Toolkit
+- React Redux
+- React Router
+- Axios
+- Material UI (MUI)
+
+### Backend
+
+- C#
+- ASP.NET Core Web API
+- Entity Framework Core
+- SQL Server
+- MediatR
+- Clean Architecture
+- Dependency Injection
+- RESTful APIs
+
+### Testing and Tools
+
+- xUnit
+- Moq
+- Swagger
+- Postman
+- Git
+- GitHub
+- Visual Studio / Visual Studio Code
+- SQL Server Management Studio
+
+## Architecture
+
+The solution is separated into frontend, backend, database, and tests.
+
+```text
+MiniOrderManagement
+│
+├── Backend
+│   ├── API
+│   ├── Application
+│   ├── Domain
+│   └── Infrastructure
+│
+├── Frontend
+│   └── React + Vite
+│
+└── Tests
+    └── Unit Tests
+```
