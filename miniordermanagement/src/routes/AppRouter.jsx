@@ -1,125 +1,74 @@
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-// Application-wide layout
-import AppLayout from "../components/layout/AppLayout.jsx";
+import AppLayout from "../components/layout/AppLayout";
 
-// Dashboard page
-import DashboardPage from "../pages/DashboardPage.jsx";
+// ============================================================
+// PAGES
+// ============================================================
 
-// Customer pages
-import CustomersPage from "../pages/CustomersPage.jsx";
-import CreateCustomerPage from "../pages/CreateCustomerPage.jsx";
-import CustomerDetailsPage from "../pages/CustomerDetailsPage.jsx";
+import DashboardPage from "../pages/DashboardPage";
 
-// Order pages
-import OrdersPage from "../pages/OrdersPage.jsx";
-import CreateOrderPage from "../pages/CreateOrderPage.jsx";
-import OrderDetailsPage from "../pages/OrderDetailsPage.jsx";
+import CustomersPage from "../pages/CustomersPage";
+import CreateCustomerPage from "../pages/CreateCustomerPage";
+import CustomerDetailsPage from "../pages/CustomerDetailsPage";
 
-// 404 / Not Found page
-import NotFoundPage from "../pages/NotFoundPage.jsx";
+import OrdersPage from "../pages/OrdersPage";
+import CreateOrderPage from "../pages/CreateOrderPage";
+import OrderDetailsPage from "../pages/OrderDetailsPage";
+
+import NotFoundPage from "../pages/NotFoundPage";
+
+// ============================================================
+// APPLICATION ROUTER
+// ============================================================
+//
+// AppLayout is the common parent for all application pages.
+//
+// React Router renders the selected page inside the
+// <Outlet /> of AppLayout.
+//
+// ============================================================
 
 function AppRouter() {
   return (
     <Routes>
-      {/* =====================================================
+      {/* ======================================================
           APPLICATION LAYOUT
-          =====================================================
+          ====================================================== */}
 
-          All routes inside this Route use AppLayout.
-
-          AppLayout contains common UI such as:
-          - Header
-          - Sidebar
-          - Main content area
-
-          AppLayout renders the matched child route through
-          <Outlet />.
-          ===================================================== */}
       <Route element={<AppLayout />}>
-        {/* ===================================================
+        {/* ====================================================
             DASHBOARD
-            =================================================== */}
+            ==================================================== */}
 
-        {/* Home / Dashboard */}
         <Route path="/" element={<DashboardPage />} />
 
-        {/* ===================================================
+        {/* ====================================================
             CUSTOMERS
-            =================================================== */}
+            ==================================================== */}
 
-        {/* Customer list */}
-        {/* GET /api/Customers will be used here */}
         <Route path="/customers" element={<CustomersPage />} />
 
-        {/* Create Customer */}
-        {/*
-
-          Navigated to when the user clicks:
-
-          [ Create Customer ]
-
-          URL:
-          /customers/create
-
-          The actual CustomerForm will be implemented
-          inside this page.
-        */}
         <Route path="/customers/create" element={<CreateCustomerPage />} />
 
-        {/* Customer Details */}
-        {/*
-          :id is a dynamic route parameter.
-
-          Example:
-
-          /customers/1
-          /customers/2
-          /customers/7
-
-          The CustomerDetailsPage will use the ID to call:
-
-          GET /api/Customers/{id}
-        */}
         <Route path="/customers/:id" element={<CustomerDetailsPage />} />
 
-        {/* ===================================================
+        {/* ====================================================
             ORDERS
-            =================================================== */}
+            ==================================================== */}
 
-        {/* Orders list */}
         <Route path="/orders" element={<OrdersPage />} />
 
-        {/* Create Order */}
         <Route path="/orders/create" element={<CreateOrderPage />} />
 
-        {/* Order Details */}
-        {/*
-          Dynamic order ID.
-
-          Examples:
-
-          /orders/1
-          /orders/5
-          /orders/10
-        */}
         <Route path="/orders/:id" element={<OrderDetailsPage />} />
+
+        {/* ====================================================
+            NOT FOUND
+            ==================================================== */}
+
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
-
-      {/* =====================================================
-          NOT FOUND / 404
-          =====================================================
-
-          If none of the routes above match the URL,
-          this route will be rendered.
-
-          Example:
-
-          /something-that-does-not-exist
-
-          will render NotFoundPage.
-          ===================================================== */}
-      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
