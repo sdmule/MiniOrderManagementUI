@@ -1,31 +1,27 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import customerReducer from "../features/customers/customerSlice";
+import orderReducer from "../features/orders/orderSlice";
 
-// =========================================================
-// Redux Store
-// =========================================================
+// ============================================================
+// REDUX STORE
+// ============================================================
 //
-// The store is the central place where application state
-// managed by Redux is stored.
+// The application now has two Redux slices:
 //
-// Currently we have:
+// customers
+// orders
 //
-// state.customers
-//
-// which is managed by customerReducer.
-// =========================================================
+// Each feature manages its own state.
+// ============================================================
 
 const store = configureStore({
   reducer: {
-    // -----------------------------------------------------
-    // Customer state
-    //
-    // This means components can access it as:
-    //
-    // state.customers
-    // -----------------------------------------------------
+    // Customer-related Redux state
     customers: customerReducer,
+
+    // Order-related Redux state
+    orders: orderReducer,
   },
 });
 
